@@ -18,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
         AcessoRest ac = new AcessoRest();
         String urlMaps = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=Seattle&destinations=San+Francisco&key=AIzaSyDxSPaFPYw4VHoODgbDcoRWjj68zeUkEu8";
-        String wsLocal = "192.168.0.104:8084/HomeService/";
+        String wsLocal = "http://192.168.0.104:8084/MyNewHome/webresources/sensor?sensorId=1";
+        String alunosWS = "http://192.168.0.104:8084/VideoAulaWebServices/webresources/aulaws/usuario/get";
         mensagem = ac.exemploGet(wsLocal);
         Log.i("JSON", mensagem);
         editText = (EditText) findViewById(R.id.editText);
