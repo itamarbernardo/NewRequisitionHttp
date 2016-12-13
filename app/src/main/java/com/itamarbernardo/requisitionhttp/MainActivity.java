@@ -6,6 +6,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+
 public class MainActivity extends AppCompatActivity {
 
     private String mensagem;
@@ -26,9 +30,16 @@ public class MainActivity extends AppCompatActivity {
         String alunosWS = "http://192.168.0.104:8084/VideoAulaWebServices/webresources/aulaws/usuario/get";
 
         mensagem = ac.exemploGet(wsLocal);
+        Gson g = new Gson();
+        SensorAnswer sa = new SensorAnswer();
+        Type modelo = new TypeToken<SensorAnswer>() {
+        }.getType();
+
+        sa = g.fromJson(mensagem, modelo);
+
         Log.i("JSON", mensagem);
         editText = (EditText) findViewById(R.id.editText);
-        editText.setText(mensagem);
+        editText.setText(sa.getValue());
 
     }
 
