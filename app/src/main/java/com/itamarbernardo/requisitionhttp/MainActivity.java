@@ -23,15 +23,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ProtocoloActions p = new ProtocoloActions();
-        p.start();
-        List<Integer> pedidos = new ArrayList<Integer>();
-        pedidos.add(1);
-        pedidos.add(1);
-        pedidos.add(2);
+        //ProtocoloActions p = new ProtocoloActions();
+        //p.start();
+        //List<Integer> pedidos = new ArrayList<Integer>();
+        //pedidos.add(1);
+        //pedidos.add(1);
+        //pedidos.add(2);
 
-        ProtocoloDeEnvio pe = new ProtocoloDeEnvio(pedidos);
-        pe.start();
+        //ProtocoloDeEnvio pe = new ProtocoloDeEnvio(pedidos);
+        //pe.start();
         //-----------------------------
         // Comando para adicionar pedidos
         // protocoloAction.adicionarComandoEnvio(pergunta);
@@ -42,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
     public void mostraMsg(View arg0){
         AcessoRest ac = new AcessoRest();
  //       String urlMaps = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=Seattle&destinations=San+Francisco&key=AIzaSyDxSPaFPYw4VHoODgbDcoRWjj68zeUkEu8";
- //       String wsLocal = "http://192.168.0.104:8084/MyNewHome/webresources/sensor?sensorId=1";
-        String alunosWS = "http://192.168.0.104:8084/VideoAulaWebServices/webresources/aulaws/usuario/get";
+        String wsLocal = "http://192.168.0.106:8084/MyNewHome/webresources/sensor?sensorId=1";
+//        String alunosWS = "http://192.168.0.104:8084/VideoAulaWebServices/webresources/aulaws/usuario/get";
 
-        mensagem = ac.exemploGet(alunosWS);
+        mensagem = ac.exemploGet(wsLocal);
         Gson g = new Gson();
         SensorAnswer sa = new SensorAnswer();
         Type modelo = new TypeToken<SensorAnswer>() {
