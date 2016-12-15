@@ -14,7 +14,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import android.os.StrictMode;
 
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.IOException;
+import java.lang.reflect.Type;
 
 
 /**
@@ -23,12 +27,10 @@ import java.io.IOException;
 public class AcessoRest {
     private int  TIMEOUT_MILLISEC = 3000;
 
-
-   // private String[] params;
+    // private String[] params;
 
     public String exemploGet(String url)
     {
-
 
         HttpClient httpclient = new DefaultHttpClient();
 
@@ -49,7 +51,6 @@ public class AcessoRest {
                     responseHandler);
 
             retorno = responseBody;
-
 
 
 

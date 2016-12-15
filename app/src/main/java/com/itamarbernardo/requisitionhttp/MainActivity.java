@@ -17,11 +17,17 @@ public class MainActivity extends AppCompatActivity {
 
     private String mensagem;
     private EditText editText;
+    private SensorAnswer sa;
+    private AcessoRest ac;
+    private String wsLocal = "http://192.168.0.106:8084/MyNewHome/webresources/sensor?sensorId=";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ac = new AcessoRest();
+        sa = new SensorAnswer();
 
         //ProtocoloActions p = new ProtocoloActions();
         //p.start();
@@ -40,25 +46,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void mostraMsg(View arg0){
-        AcessoRest ac = new AcessoRest();
- //       String urlMaps = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=Seattle&destinations=San+Francisco&key=AIzaSyDxSPaFPYw4VHoODgbDcoRWjj68zeUkEu8";
-        String wsLocal = "http://192.168.0.106:8084/MyNewHome/webresources/sensor?sensorId=1";
-//        String alunosWS = "http://192.168.0.104:8084/VideoAulaWebServices/webresources/aulaws/usuario/get";
 
-        mensagem = ac.exemploGet(wsLocal);
+        mensagem = ac.exemploGet(wsLocal + 1);
+        sa = transformaJson(mensagem, sa);
+        Log.i("GSON", String.valueOf(sa.getValue()));
+
+        Log.i("JSON", mensagem);
+
+        editText = (EditText) findViewById(R.id.editText);
+        editText.setText(String.valueOf(sa.getValue()));
+
+    }
+
+    public SensorAnswer transformaJson(String mensagem, SensorAnswer sa){
         Gson g = new Gson();
-        SensorAnswer sa = new SensorAnswer();
         Type modelo = new TypeToken<SensorAnswer>() {
         }.getType();
 
         sa = g.fromJson(mensagem, modelo);
 
-        Log.i("JSON", mensagem);
-        editText = (EditText) findViewById(R.id.editText);
-        editText.setText(sa.getValue());
-
+        return sa;
     }
-
-
 
 }

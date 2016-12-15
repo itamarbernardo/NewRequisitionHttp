@@ -45,14 +45,14 @@ public class ProtocoloActions extends Thread{
                 try {
 
                     AcessoRest ac = new AcessoRest();
-                    String mensagem = ac.exemploGet("http://192.168.0.104:8084/TestHome/webresources//sensor?sensorId==" + this.fila.poll());
+                    //String mensagem = ac.exemploGet("http://192.168.0.104:8084/TestHome/webresources//sensor?sensorId==" + this.fila.poll());
 
                     Gson g = new Gson();
                     SensorAnswer s = new SensorAnswer();
-                    Type modelo = new TypeToken<SensorAnswer>() {
-                    }.getType();
+                    //Type modelo = new TypeToken<SensorAnswer>() {
+                    //}.getType();
 
-                    s = g.fromJson(mensagem, modelo);
+                    //s = g.fromJson(mensagem, modelo);
                     //Esses não precisa mostrar, por enquanto!
 
                 } catch (Exception ex) {
