@@ -18,54 +18,43 @@ public class MainActivity extends AppCompatActivity {
     private String mensagem;
     private EditText editText;
     private SensorAnswer sa;
-    private AcessoRest ac;
-    private String wsLocal = "http://192.168.0.106:8084/MyNewHome/webresources/sensor?sensorId=";
-
+    private AcessoHome ac;
+    private String wsLocal = "http://192.168.0.101:8084/MyNewHome/webresources/sensor?sensorId=";
+    private ProtocoloDeEnvio pe;
+    private ProtocoloActions p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ac = new AcessoRest();
+        ac = new AcessoHome();
         sa = new SensorAnswer();
 
-        //ProtocoloActions p = new ProtocoloActions();
-        //p.start();
-        //List<Integer> pedidos = new ArrayList<Integer>();
-        //pedidos.add(1);
-        //pedidos.add(1);
-        //pedidos.add(2);
+        p = new ProtocoloActions(wsLocal);
+        p.start();
+        List<Integer> pedidos = new ArrayList<Integer>();
+        pedidos.add(2);
 
-        //ProtocoloDeEnvio pe = new ProtocoloDeEnvio(pedidos);
-        //pe.start();
+        pe = new ProtocoloDeEnvio(pedidos, wsLocal);
+        pe.start();
         //-----------------------------
-        // Comando para adicionar pedidos
-        // protocoloAction.adicionarComandoEnvio(pergunta);
-
 
     }
 
-    public void mostraMsg(View arg0){
+    public void ligarTV(View arg0){
 
-        mensagem = ac.exemploGet(wsLocal + 1);
-        sa = transformaJson(mensagem, sa);
-        Log.i("GSON", String.valueOf(sa.getValue()));
-
-        Log.i("JSON", mensagem);
-
-        editText = (EditText) findViewById(R.id.editText);
-        editText.setText(String.valueOf(sa.getValue()));
+        p.adicionarComandoEnvio(1);
 
     }
 
-    public SensorAnswer transformaJson(String mensagem, SensorAnswer sa){
-        Gson g = new Gson();
-        Type modelo = new TypeToken<SensorAnswer>() {
-        }.getType();
+    public void ligarAr(View arg0){
+        p.adicionarComandoEnvio(3);
 
-        sa = g.fromJson(mensagem, modelo);
+    }
 
-        return sa;
+    public void ligarLuz(View arg0){
+        p.adicionarComandoEnvio(4);
+
     }
 
 }

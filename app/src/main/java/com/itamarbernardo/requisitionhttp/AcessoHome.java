@@ -1,21 +1,17 @@
 package com.itamarbernardo.requisitionhttp;
 
+import android.os.StrictMode;
 import android.util.Log;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
-
 import org.apache.http.client.methods.HttpGet;
-
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-
-import android.os.StrictMode;
-
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -24,24 +20,24 @@ import java.lang.reflect.Type;
 /**
  * Created by marcelosiedler on 09/03/15.
  */
-public class AcessoRest {
+public class AcessoHome {
+
     private int  TIMEOUT_MILLISEC = 3000;
 
-    // private String[] params;
+    public AcessoHome(){
 
-    public String exemploGet(String url)
+    }
+
+    public String consumerGet(String url)
     {
 
         HttpClient httpclient = new DefaultHttpClient();
 
         HttpGet chamadaget = new HttpGet(url);
         String retorno = "";
-        // Instantiate a GET HTTP method
+
         try {
 
-
-
-            //Aqui o ideal é colocar a requesição assíncrona
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
             StrictMode.setThreadPolicy(policy);
@@ -51,10 +47,6 @@ public class AcessoRest {
                     responseHandler);
 
             retorno = responseBody;
-
-
-
-
 
         } catch (ClientProtocolException e) {
             // TODO Auto-generated catch block
@@ -71,4 +63,16 @@ public class AcessoRest {
 
 
     }
+
+    public SensorAnswer transformaJson(String mensagem){
+        SensorAnswer sa = new SensorAnswer();
+        Gson g = new Gson();
+        Type modelo = new TypeToken<SensorAnswer>() {
+        }.getType();
+
+        sa = g.fromJson(mensagem, modelo);
+
+        return sa;
+    }
+
 }
