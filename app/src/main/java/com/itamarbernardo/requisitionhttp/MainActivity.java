@@ -31,7 +31,7 @@ public class MainActivity extends ActionBarActivity {
     private EditText editText;
     private SensorAnswer sa;
     private AcessoHome ac;
-    private String wsLocal = "http://192.168.0.101:8084/MyNewHome/webresources/sensor?sensorId=";
+    private String wsLocal = "http://192.168.0.106:8084/MyNewHome/webresources/sensor?sensorId=";
     private ProtocoloDeEnvio pe;
     private ProtocoloActions p;
 
@@ -46,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
         p = new ProtocoloActions(wsLocal);
         p.start();
         List<Integer> pedidos = new ArrayList<Integer>();
-        pedidos.add(2);
+        pedidos.add(1);
 
         pe = new ProtocoloDeEnvio(pedidos, wsLocal);
         pe.start();

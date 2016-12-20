@@ -41,12 +41,15 @@ public class ProtocoloDeEnvio extends Thread{
                     Log.i("Valor", String.valueOf(p));
                     Log.i("Valor", String.valueOf(sa.getValue()));
                     if (sa.getValue() == 777) {
-                        verificaFogo = true;
                         Log.i("NOTIFICACAO", "Tá pegando fogo");
+                        verificaFogo = true;
 
                     }
-                    else{
+                    else if(sa.getValue() == 333){
+                        Log.i("NOTIFICACAO", "Tudo tranquilo");
                         verificaFogo = false;
+                    }
+                    else{
                         Log.i("NOTIFICACAO", "Código não reconhecido");
                     }
 
