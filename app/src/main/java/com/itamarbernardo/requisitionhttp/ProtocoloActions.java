@@ -19,16 +19,14 @@ public class ProtocoloActions extends Thread{
 
 
     public ProtocoloActions(String caminho) {
-        //this.fila = new LinkedList<Integer>();
         this.fila = new ArrayList<>();
         this.sa = new SensorAnswer();
         this.caminho = caminho;
- //       ac = new AcessoHome();
+
     }
 
     public synchronized void adicionarComandoEnvio(int valorEnvio) {
         this.fila.add(valorEnvio);
-        //this.fila.offer(valorEnvio);
     }
 
     public synchronized List<Integer> getFila() {
