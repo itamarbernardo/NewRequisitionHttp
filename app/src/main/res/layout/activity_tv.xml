@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <Button
+        android:text="Ligar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="actionButtonTVON"
+        android:id="@+id/buttonTV" />
+
+
+    <Button
+        android:text="Desligar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="actionButtonTVOFF"
+        android:id="@+id/buttonTV1"
+        android:layout_below="@+id/buttonTV"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Voltar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="back"
+        android:id="@+id/buttonTV2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Aumentar Volume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="actionButtonTVVOLUP"
+        android:id="@+id/buttonTV3"
+        android:layout_below="@+id/buttonTV1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Diminuir Volume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="actionButtonTVVOLDN"
+        android:id="@+id/buttonTV4"
+        android:layout_below="@+id/buttonTV3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <Button
+        android:text="Próximo Canal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="actionButtonTVPCHN"
+        android:id="@+id/buttonTV5"
+        android:layout_below="@+id/buttonTV4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <Button
+        android:text="Voltar Canal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="actionButtonTVVCHN"
+        android:id="@+id/buttonTV6"
+        android:layout_below="@+id/buttonTV5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

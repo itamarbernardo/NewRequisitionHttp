@@ -14,6 +14,7 @@ public class ProtocoloDeEnvio extends Thread{
     private String caminho;
     private String mensagem;
     private SensorAnswer sa;
+    private boolean verificaFogo = false;
 
     public ProtocoloDeEnvio(List<Integer> pedidos, String caminho) {
         this.pedidos = new ArrayList<>();
@@ -27,7 +28,7 @@ public class ProtocoloDeEnvio extends Thread{
         enviaPedidos();
     }
 
-    public void enviaPedidos() {
+    public boolean enviaPedidos() {
 
         while (true) {
 
@@ -39,16 +40,18 @@ public class ProtocoloDeEnvio extends Thread{
 
                     Log.i("Valor", String.valueOf(p));
                     Log.i("Valor", String.valueOf(sa.getValue()));
-                    if (sa.getValue() == 222) {
-                        //Lança notificação para o usuário que a casa está pegando fogo
+                    if (sa.getValue() == 777) {
+                        verificaFogo = true;
                         Log.i("NOTIFICACAO", "Tá pegando fogo");
+
                     }
                     else{
+                        verificaFogo = false;
                         Log.i("NOTIFICACAO", "Código não reconhecido");
                     }
 
                     try {
-                        Thread.sleep(500);
+                        Thread.sleep(5000);
                     } catch (InterruptedException ex) {
                         ex.printStackTrace();
                     }
@@ -57,6 +60,7 @@ public class ProtocoloDeEnvio extends Thread{
                 }
 
             }
+            return verificaFogo;
         }
 
     }
