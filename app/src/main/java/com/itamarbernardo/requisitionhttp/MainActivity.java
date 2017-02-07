@@ -31,7 +31,7 @@ public class MainActivity extends ActionBarActivity {
     private EditText editText;
     private SensorAnswer sa;
     private AcessoHome ac;
-    private String wsLocal = "http://192.168.0.106:8084/MyNewHome/webresources/sensor?sensorId=";
+    private String wsLocal = "http://192.168.0.101:8084/MyNewHome/webresources/sensor?sensorId=";
     private ProtocoloDeEnvio pe;
     private ProtocoloActions p;
 

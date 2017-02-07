@@ -37,12 +37,13 @@ public class AcessoHome {
         String retorno = "";
 
         try {
-
+            //Permissões
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
             StrictMode.setThreadPolicy(policy);
 
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
+            //Pega a resposta com dois parâmetros de entrata(o tipo -GET e o tipo de resposta - String)
             String responseBody = httpclient.execute(chamadaget,
                     responseHandler);
 
